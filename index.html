@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>VGAR</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Times New Roman", serif;
+      letter-spacing: 0.1em;
+    }
+
+    #countdown {
+      font-size: 3rem;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+
+<div id="countdown"></div>
+
+<script>
+  // ⚠️ MUDA A DATA AQUI
+  const targetDate = new Date("2026-05-01T00:00:00");
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = targetDate - now;
+
+    if (diff <= 0) {
+      document.getElementById("countdown").innerHTML = "VGAR";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("countdown").innerHTML =
+      `${days} : ${hours} : ${minutes} : ${seconds}`;
+  }
+
+  setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
